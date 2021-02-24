@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center mt-3">
+    <h1>Welcome To Articles App</h1>
+    <p class="lead">This application is main for posting and updating articles from CST Students.</p>
+
+    {% if session.logged_in == NULL %}
+    <a href="/register" class="btn btn-primary btn-lg">Register</a>
+    <a href="/login" class="btn btn-success btn-lg ">Login</a>
+    {% endif %}
+</div>
+
+{% endblock %}
