@@ -28,7 +28,9 @@
             <td>{{ article.body }}</td>
             <td>{{ article.create_date }}</td>
             <td> <a href="edit_article/{{article.id }}" class="btn btn-success pull-right">Edit </a></td>
-            <td> <a href="#" class="btn btn-danger">Delete </a></td>
+            <td>
+              <a href="delete_article/{{article.id }}" class="btn btn-danger ">Delete </a></td>
+            </td>
         </tr>
 
         {% endfor %}

@@ -1,6 +1,4 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
-from wtforms.widgets.core import Input
-from data import Articles
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
@@ -208,8 +206,8 @@ def edit_article(id):
     form.body.data =article['body']
 
     if request.method == 'POST' and form.validate():
-        title = form.title.data
-        body = form.body.data
+        title = request.form['title']
+        body = request.form['body']
 
         #create cursor
         cursor = mysql.connection.cursor()
@@ -226,7 +224,22 @@ def edit_article(id):
         
     return render_template('edit_article.html', form=form, article=article)
 
+#DELETE ARTICLE
+@app.route('/delete_article/<string:id>', methods=['POST', 'GET'])
+@is_logged_in
+def delete_article(id):
+    #create cursor
+    cursor = mysql.connection.cursor()
+    cursor.execute("DELETE FROM articles WHERE id=%s", [id])
 
+    #commit db
+    mysql.connection.commit()
+        #close connection 
+    cursor.close()
+
+    flash('Article deleted.', 'success')
+
+    return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
     app.run(debug=True)
