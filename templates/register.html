@@ -2,17 +2,22 @@
 
 {% block body %}
 
-<h1>Register</h1>
+
 
 {% from "includes/_formhelper.html" import render_field %}
-<div class="container">
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 col-md-3">
+        </div>
+        <div class="col-12 col-md-4">
+            <h1>Register</h1>
 <form method="POST" action="" >
     <div class="form-group">
         Name
         {{ render_field(form.name, class_="form-control md ") }}
     </div>
     <div class="form-group">
-        Email
+        Email 
         {{ render_field(form.email, class_="form-control")}}
     </div>
 
@@ -31,8 +36,10 @@
         {{ render_field(form.confirm, class_="form-control")}}
     </div>
     <br>
-    <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+    <p><input type="submit" class="btn btn-primary form-control" value="Submit"></p>
 
 </form>
+</div>
+</div>
 </div>
 {% endblock %}

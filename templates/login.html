@@ -2,18 +2,21 @@
 
 {% block body %}
 
-<h1>Login</h1>
+
     {% if error %}
     <div class="alert alert-danger">{{ error }} </div>
     {% endif %}
 
     
-<div></div>
-
-<form action="" method="POST">
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" name="username" class="form-control" value="{{request.form.username}}" >
+<div class="row mt-3">
+<div class="col-12 col-md-3">
+</div>
+ <div class="col-12 col-md-4">
+    <h1>Login</h1>
+    <form action="" method="POST">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" value="{{request.form.username}}" >
 
     </div>
     <div class="form-group">
@@ -21,8 +24,9 @@
         <input type="password" name="password" class="form-control" value="{{request.form.password}}" >
         
     </div><br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary form-control">Submit</button>
 </form>
 
+</div>
 </div>
 {% endblock %}
